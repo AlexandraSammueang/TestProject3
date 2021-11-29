@@ -86,9 +86,66 @@ namespace Testtest
             Assert.True(account1.Amount.isZero());
             Assert.True(account2.Amount.isPositive());
 
-
-
         }
+
+        [Fact]
+        public void Deposit_Money_True()
+        {
+            var account = new Account();
+            var kronor = new Kronor(10, 5);
+
+            account.Deposit(kronor);
+            var actualValue = account.Amount.KronorPart();
+            var actualValueÖren = account.Amount.ÖrenPart();
+            Assert.True(actualValue > 0);
+            Assert.True(actualValueÖren > 0);
+        }
+
+        [Fact]
+        public void Deposit_Money_False()
+        {
+            var account = new Account();
+            var kronor = new Kronor(-10, -5);
+
+            account.Deposit(kronor);
+            var actualValue = account.Amount.KronorPart();
+            var actualValueÖren = account.Amount.ÖrenPart();
+            Assert.False(actualValue < 0);
+            Assert.False(actualValueÖren < 0);
+
+            //var result = account.Amount.KronorPart();
+            //var resultÖren = account.Amount.ÖrenPart();
+
+           // Assert.Equal(-10, result);
+        }
+
+        //[Fact]
+        //public void Deposit_Money_Zero_TestNagative()
+        //{
+        //    var account = new Account();
+        //    var kronor = new Kronor(0, 0);
+
+        //    account.Deposit(kronor);
+        //    //var actualValue = account.Amount.KronorPart();
+        //    //var actualValueÖren = account.Amount.ÖrenPart();
+        //    bool result = account.Amount.isNegative();
+        //    Assert.False(result);
+
+            
+        //}
+        //[Fact]
+        //public void Deposit_Money_Zero_TestPositive()
+        //{
+        //    var account = new Account();
+        //    var kronor = new Kronor(0, 0);
+
+        //    account.Deposit(kronor);
+        //    //var actualValue = account.Amount.KronorPart();
+        //    //var actualValueÖren = account.Amount.ÖrenPart();
+        //    bool result = account.Amount.isZero();
+        //    Assert.True(result);
+
+        //}
 
     }
 }
