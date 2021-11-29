@@ -3,7 +3,7 @@ namespace Testtest
 {
     public class Kronor
     {
-        public int ÖrenPart1;
+        //public int ÖrenPart1;
         /*
          * Totala värdet i öre. 
          * När vi väl har skapat ett Kronor-objekt ska det aldrig kunna ändras
@@ -58,10 +58,10 @@ namespace Testtest
             }
             var tempÖrenAddition = this.ÖrenPart() + other.ÖrenPart(); //tagit bort onödiga paranteser
             var tempKronorAddition = this.KronorPart() * 100 + other.KronorPart() * 100; //ändrat här
-            if (tempKronorAddition < 0)
+            /*if (tempKronorAddition < 0)
             {
                 throw new ArgumentException("Negative value");
-            }
+            }*/ //Tagit bort denna, behövs ej!!
 
             var tempKronor = tempKronorAddition / 100;
 

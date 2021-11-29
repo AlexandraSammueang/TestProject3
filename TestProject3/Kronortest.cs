@@ -109,6 +109,39 @@ namespace Testtest
             Assert.Equal(2, kronePart);
             Assert.Equal(0, örenPart);
         }
+        [Fact]
+        public void Kronor_Adding_NegativeValue()
+        {
+            //arrange
+            Kronor myKronor = new Kronor(-50, 0);
+
+            //act
+            var actualValue = myKronor.Add(new Kronor(45, 0));
+            var kronePart = actualValue.KronorPart();
+            var örenPart = actualValue.ÖrenPart();
+
+            //assert
+            Assert.IsType<Kronor>(actualValue);
+            Assert.Equal(-5, kronePart);
+            Assert.Equal(0, örenPart);
+        }
+
+        [Fact]
+        public void Kronor_Test_CopyConstructor()
+        {
+            //arrange
+            Kronor myKronor1 = new Kronor(15,5);
+            Kronor myKronor2 = new Kronor(myKronor1); //kopierar kronor1
+
+            //act
+            var actualValue = myKronor2.KronorPart();
+            var actualValueÖren = myKronor2.ÖrenPart();
+
+            //assert
+            Assert.Equal(myKronor1.KronorPart(), actualValue);
+            Assert.Equal(myKronor1.ÖrenPart(), actualValueÖren);
+
+        }
 
     }
 }

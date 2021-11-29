@@ -107,16 +107,12 @@ namespace Testtest
             var account = new Account();
             var kronor = new Kronor(-10, -5);
 
-            account.Deposit(kronor);
-            var actualValue = account.Amount.KronorPart();
-            var actualValueÖren = account.Amount.ÖrenPart();
-            Assert.False(actualValue < 0);
-            Assert.False(actualValueÖren < 0);
+            Action act = () => account.Deposit(kronor);
 
-            //var result = account.Amount.KronorPart();
-            //var resultÖren = account.Amount.ÖrenPart();
 
-           // Assert.Equal(-10, result);
+            Assert.Throws<ArgumentException>(act);
+
+           //ändrat så argument kastas i deposit!!
         }
 
         //[Fact]
@@ -146,6 +142,6 @@ namespace Testtest
         //    Assert.True(result);
 
         //}
-
+        //provat lägga in negativa och positiva värden och fixat bugg kan inte lägga in negativa värden.
     }
 }
